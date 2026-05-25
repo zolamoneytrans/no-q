@@ -20,10 +20,12 @@ workflows:
           keychain initialize
           app-store-connect fetch-signing-files "com.swaziapplilab.noq" --type IOS_APP_STORE --create
           keychain add-certificates
+          cd ios/App
           xcode-project use-profiles
       - name: Build iOS App
         script: |
-          xcode-project build-ipa --project "ios/App/App.xcodeproj" --scheme "App"
+          cd ios/App
+          xcode-project build-ipa --project "App.xcodeproj" --scheme "App"
     artifacts:
       - ios/App/build/ios/ipa/*.ipa
     publishing:
