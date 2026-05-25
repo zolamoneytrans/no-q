@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — No Q</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f1a14;
+    --ink-muted: #4a5e52;
+    --ink-faint: #8ba695;
+    --surface: #f4f8f5;
+    --surface-alt: #e8f0eb;
+    --accent: #1a7a45;
+    --accent-light: #d0ead9;
+    --accent-mid: #2ea05a;
+    --rule: #ccddd3;
+    --white: #ffffff;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-icon svg { display: block; }
+
+  .header-link {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+  .header-link:hover { color: var(--accent); }
+
+  /* ── HERO BAND ── */
+  .hero-band {
+    background: var(--accent);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-band::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .hero-band::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.72);
+    font-weight: 300;
+    max-width: 460px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── LAYOUT ── */
+  .page-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .page-body { grid-template-columns: 1fr; gap: 2rem; }
+    .sidebar { display: none; }
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    position: sticky;
+    top: 84px;
+  }
+
+  .sidebar-title {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+  }
+
+  .sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+
+  .sidebar nav a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-muted);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .sidebar nav a:hover {
+    color: var(--accent);
+    background: var(--accent-light);
+    border-left-color: var(--accent);
+  }
+
+  /* ── CONTENT ── */
+  .content { min-width: 0; }
+
+  .summary-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .summary-card-label {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 0.6rem;
+  }
+
+  .summary-card p {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  .summary-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.25rem;
+  }
+
+  .pill {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    border-radius: 100px;
+    padding: 4px 12px;
+  }
+
+  .policy-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-number {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .policy-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--surface-alt);
+  }
+
+  .policy-section p {
+    margin-bottom: 1rem;
+    color: var(--ink-muted);
+    font-size: 15.5px;
+  }
+
+  .policy-section p:last-child { margin-bottom: 0; }
+
+  .policy-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .policy-section ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  .policy-section ul li::before {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-mid);
+    margin-top: 8px;
+  }
+
+  .highlight-box {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    font-size: 14.5px;
+    color: var(--accent);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 14px;
+  }
+
+  .data-table th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .data-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-muted);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .data-table td:first-child { font-weight: 500; color: var(--ink); }
+
+  .data-table tr:last-child td { border-bottom: none; }
+
+  /* ── CONTACT CARD ── */
+  .contact-card {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 2.5rem;
+    color: white;
+    margin-top: 1rem;
+  }
+
+  .contact-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-card p {
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1.5rem;
+    line-height: 1.65;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 10px;
+  }
+
+  .contact-detail .icon {
+    width: 28px;
+    height: 28px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 13px;
+  }
+
+  .contact-detail a { color: var(--accent-mid); text-decoration: none; }
+  .contact-detail a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    background: var(--white);
+    padding: 1.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-muted);
+  }
+
+  .footer-links { display: flex; gap: 1.5rem; }
+
+  .footer-links a {
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-decoration: none;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--ink-faint);
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  /* ── divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://carwashes.africa" class="logo">
+    <div class="logo-icon">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <circle cx="9" cy="9" r="3.5" fill="white"/>
+        <path d="M9 2v2M9 14v2M2 9h2M14 9h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    No Q
+  </a>
+  <a href="https://carwashes.africa" class="header-link">← Back to app</a>
+</header>
+
+<div class="hero-band">
+  <div class="hero-label">Legal</div>
+  <h1 class="hero-title">Privacy Policy</h1>
+  <p class="hero-sub">How No Q collects, uses, and protects your information when you use our carwash queue platform.</p>
+  <p class="hero-meta">Effective date: 18 April 2026 &nbsp;·&nbsp; carwashes.africa</p>
+</div>
+
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <p class="sidebar-title">On this page</p>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#data-we-collect">Data we collect</a>
+      <a href="#how-we-use">How we use it</a>
+      <a href="#sharing">Sharing & disclosure</a>
+      <a href="#retention">Retention</a>
+      <a href="#your-rights">Your rights</a>
+      <a href="#security">Security</a>
+      <a href="#cookies">Cookies</a>
+      <a href="#children">Children</a>
+      <a href="#changes">Policy changes</a>
+      <a href="#contact">Contact us</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- Summary card -->
+    <div class="summary-card">
+      <p class="summary-card-label">Plain-language summary</p>
+      <p>No Q is a carwash queue management app for <strong>carwashes.africa</strong>. We collect only the information needed to let you skip queues and manage bookings. We never sell your personal data. You can request deletion of your account at any time.</p>
+      <div class="summary-pills">
+        <span class="pill">No data selling</span>
+        <span class="pill">Minimal collection</span>
+        <span class="pill">Deletion on request</span>
+        <span class="pill">Encrypted in transit</span>
+      </div>
+    </div>
+
+    <!-- 1. Overview -->
+    <section class="policy-section" id="overview">
+      <span class="section-number">01</span>
+      <h2>Overview</h2>
+      <p>This Privacy Policy explains how <strong>No Q</strong> ("we", "our", or "us"), accessible at <a href="https://carwashes.africa" style="color:var(--accent);">carwashes.africa</a>, collects, uses, stores, and protects information about users ("you") of our web application.</p>
+      <p>By accessing or using No Q, you agree to the practices described in this policy. If you do not agree, please do not use the service.</p>
+      <div class="highlight-box">
+        No Q is operated by Swazi Appli Lab. Our registered address and full legal name are available upon request by contacting us at the details in the Contact section below.
+      </div>
+    </section>
+
+    <!-- 2. Data we collect -->
+    <section class="policy-section" id="data-we-collect">
+      <span class="section-number">02</span>
+      <h2>Data we collect</h2>
+      <p>We collect information in two ways: information you provide directly, and information collected automatically when you use the app.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Examples</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Account information</td>
+            <td>Name, phone number, email address, password hash</td>
+            <td>You, at registration</td>
+          </tr>
+          <tr>
+            <td>Booking data</td>
+            <td>Carwash location, vehicle type, queue position, appointment time</td>
+            <td>You, when booking</td>
+          </tr>
+          <tr>
+            <td>Vehicle information</td>
+            <td>Vehicle make, model, optional plate number</td>
+            <td>You, optionally</td>
+          </tr>
+          <tr>
+            <td>Location data</td>
+            <td>Approximate city/region (if you enable location services)</td>
+            <td>Your device, with permission</td>
+          </tr>
+          <tr>
+            <td>Usage data</td>
+            <td>Pages visited, features used, session duration, device type</td>
+            <td>Automatically</td>
+          </tr>
+          <tr>
+            <td>Communications</td>
+            <td>Messages sent to our support team</td>
+            <td>You, when contacting us</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>We do <strong>not</strong> collect sensitive personal data such as national ID numbers, financial account credentials, biometrics, or health data.</p>
+    </section>
+
+    <!-- 3. How we use it -->
+    <section class="policy-section" id="how-we-use">
+      <span class="section-number">03</span>
+      <h2>How we use your data</h2>
+      <p>We use the information we collect to:</p>
+      <ul>
+        <li>Create and manage your No Q account and bookings</li>
+        <li>Show your position in a carwash queue and send queue-status notifications</li>
+        <li>Connect you with carwash operators who are partners on the platform</li>
+        <li>Improve the performance, reliability, and features of the app</li>
+        <li>Respond to your support requests and inquiries</li>
+        <li>Send transactional messages such as booking confirmations and reminders</li>
+        <li>Detect and prevent fraud, abuse, or unauthorised access</li>
+        <li>Comply with applicable legal obligations</li>
+      </ul>
+      <p>We do not use your data for automated profiling that produces legal effects about you, nor for targeted advertising to third parties.</p>
+    </section>
+
+    <!-- 4. Sharing -->
+    <section class="policy-section" id="sharing">
+      <span class="section-number">04</span>
+      <h2>Sharing &amp; disclosure</h2>
+      <p>We do not sell, rent, or trade your personal information. We may share data only in these limited circumstances:</p>
+      <ul>
+        <li><strong>Carwash operators:</strong> We share your booking details (name, vehicle type, appointment time) with the specific carwash you book, to fulfil the service.</li>
+        <li><strong>Service providers:</strong> Trusted third-party vendors (hosting, analytics, SMS gateways) who process data on our behalf under data processing agreements.</li>
+        <li><strong>Legal requirements:</strong> When required by law, court order, or a government authority in the applicable jurisdiction.</li>
+        <li><strong>Business transfer:</strong> In the event of a merger, acquisition, or sale of assets, your data may be transferred with prior notice to you.</li>
+        <li><strong>Safety:</strong> To protect the rights, property, or safety of No Q, our users, or the public.</li>
+      </ul>
+      <div class="highlight-box">
+        Any service provider we engage is contractually required to process your data only as instructed by us and to maintain appropriate security standards.
+      </div>
+    </section>
+
+    <!-- 5. Retention -->
+    <section class="policy-section" id="retention">
+      <span class="section-number">05</span>
+      <h2>Data retention</h2>
+      <p>We keep your personal data for as long as your account is active or as needed to provide our services. Specifically:</p>
+      <ul>
+        <li>Account data is retained until you delete your account or request erasure.</li>
+        <li>Booking history is retained for 24 months after each booking for service quality and dispute resolution purposes.</li>
+        <li>Usage logs are anonymised after 12 months.</li>
+        <li>Support correspondence is kept for up to 36 months.</li>
+      </ul>
+      <p>After these periods, data is securely deleted or irreversibly anonymised.</p>
+    </section>
+
+    <!-- 6. Your rights -->
+    <section class="policy-section" id="your-rights">
+      <span class="section-number">06</span>
+      <h2>Your rights</h2>
+      <p>Depending on your jurisdiction, you may have the right to:</p>
+      <ul>
+        <li><strong>Access</strong> the personal data we hold about you</li>
+        <li><strong>Correct</strong> inaccurate or incomplete data</li>
+        <li><strong>Delete</strong> your account and associated personal data</li>
+        <li><strong>Port</strong> your data in a machine-readable format</li>
+        <li><strong>Restrict</strong> processing of your data in certain circumstances</li>
+        <li><strong>Object</strong> to processing based on our legitimate interests</li>
+        <li><strong>Withdraw consent</strong> where processing is based on your consent</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at the address in the Contact section. We will respond within 30 days. We may need to verify your identity before processing certain requests.</p>
+    </section>
+
+    <!-- 7. Security -->
+    <section class="policy-section" id="security">
+      <span class="section-number">07</span>
+      <h2>Security</h2>
+      <p>We take reasonable technical and organisational measures to protect your data, including:</p>
+      <ul>
+        <li>HTTPS/TLS encryption for all data in transit</li>
+        <li>Hashed storage of passwords (we never store plain-text passwords)</li>
+        <li>Access controls limiting data access to authorised personnel only</li>
+        <li>Regular security reviews of our infrastructure</li>
+      </ul>
+      <p>No method of transmission or storage is 100% secure. In the event of a data breach that poses a high risk to your rights, we will notify you and the relevant authority as required by law, without undue delay.</p>
+    </section>
+
+    <!-- 8. Cookies -->
+    <section class="policy-section" id="cookies">
+      <span class="section-number">08</span>
+      <h2>Cookies &amp; similar technologies</h2>
+      <p>No Q uses cookies and similar local storage mechanisms for the following purposes:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Purpose</th>
+            <th>Can be disabled?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Essential</td>
+            <td>Keep you logged in, maintain session state</td>
+            <td>No — required to use the app</td>
+          </tr>
+          <tr>
+            <td>Analytics</td>
+            <td>Understand how the app is used to improve it</td>
+            <td>Yes — via browser settings</td>
+          </tr>
+          <tr>
+            <td>Preference</td>
+            <td>Remember your language and notification settings</td>
+            <td>Yes — clears on logout</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>We do not use advertising or tracking cookies. You can manage cookie preferences through your browser settings.</p>
+    </section>
+
+    <!-- 9. Children -->
+    <section class="policy-section" id="children">
+      <span class="section-number">09</span>
+      <h2>Children's privacy</h2>
+      <p>No Q is not directed at children under the age of 16. We do not knowingly collect personal data from children. If you believe we have inadvertently collected information from a child, please contact us immediately and we will delete it.</p>
+    </section>
+
+    <!-- 10. Changes -->
+    <section class="policy-section" id="changes">
+      <span class="section-number">10</span>
+      <h2>Policy changes</h2>
+      <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. When we make material changes, we will:</p>
+      <ul>
+        <li>Update the "Effective date" at the top of this page</li>
+        <li>Display a notice in the app on your next login</li>
+        <li>Send an email notification if the change significantly affects your rights</li>
+      </ul>
+      <p>Continued use of No Q after the effective date constitutes acceptance of the updated policy.</p>
+    </section>
+
+    <!-- 11. Contact -->
+    <section class="policy-section" id="contact">
+      <span class="section-number">11</span>
+      <h2>Contact us</h2>
+      <p>If you have questions, concerns, or requests relating to this Privacy Policy or your personal data, reach us through any of the following:</p>
+      <div class="contact-card">
+        <h3>No Q — Privacy team</h3>
+        <p>We aim to respond to all privacy inquiries within 5 business days.</p>
+        <div class="contact-detail">
+          <div class="icon">🌐</div>
+          <span><a href="https://carwashes.africa">carwashes.africa</a></span>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">✉</div>
+          <span><a href="mailto:privacy@carwashes.africa">privacy@carwashes.africa</a></span>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">📍</div>
+          <span>Swazi Appli Lab — Eswatini / DRC</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <span class="footer-brand">No Q · carwashes.africa</span>
+  <div class="footer-links">
+    <a href="#">Terms of Service</a>
+    <a href="#">Cookie Policy</a>
+    <a href="https://carwashes.africa">Home</a>
+  </div>
+  <p class="footer-copy">© 2026 Swazi Appli Lab. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "appId": "com.swaziapplilab.noq",
+  "appName": "No Q",
+  "webDir": "public_html",
+  "server": {
+    "url": "https://carwashes.africa",
+    "cleartext": true
+  }
+}

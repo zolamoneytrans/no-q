@@ -1,0 +1,44 @@
+{
+  "name": "No Q",
+  "short_name": "No Q",
+  "description": "No more Queues - Book car washes instantly",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#6d28d9",
+  "background_color": "#faf5ff",
+  "display": "standalone",
+  "start_url": "https://carwashes.africa/user-login.php",
+  "scope": "/",
+  "orientation": "portrait",
+  "lang": "en",
+  "categories": [
+    "business",
+    "lifestyle",
+    "navigation",
+    "news",
+    "personalization",
+    "productivity",
+    "social",
+    "utilities"
+  ]
+}

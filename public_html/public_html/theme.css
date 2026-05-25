@@ -1,0 +1,85 @@
+/* No Q - Brand Colours */
+:root {
+    --purple: #7b2cbf;
+    --orange: #ff8c00;
+    --white: #ffffff;
+    
+    --purple-light: #9b4ddf;
+    --purple-dark: #5a1e8a;
+    --orange-light: #ffa733;
+    --orange-dark: #e67a00;
+    
+    --bg-gradient: linear-gradient(145deg, #f8f4ff 0%, #f0eaff 100%);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-color: #1a1a2e;
+    --text-secondary: #4a4a6a;
+    --header-bg: rgba(255, 255, 255, 0.85);
+    --border-color: rgba(123, 44, 191, 0.15);
+}
+
+body.dark-mode {
+    --bg-gradient: linear-gradient(145deg, #1a0a2e 0%, #0f0f1a 100%);
+    --card-bg: rgba(30, 20, 46, 0.95);
+    --text-color: #e8e8f0;
+    --text-secondary: #b0b0c0;
+    --header-bg: rgba(26, 10, 46, 0.95);
+    --border-color: rgba(123, 44, 191, 0.3);
+}
+
+body {
+    background: var(--bg-gradient);
+    color: var(--text-color);
+}
+
+.app-header {
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Buttons - Purple primary, Orange secondary */
+.btn-primary, .btn, .btn-small {
+    background: var(--purple);
+}
+
+.btn-primary:hover, .btn:hover, .btn-small:hover {
+    background: var(--purple-dark);
+}
+
+.btn-book, .btn-outline, .btn-orange, .fab {
+    background: var(--orange);
+}
+
+.btn-book:hover, .btn-outline:hover, .btn-orange:hover, .fab:hover {
+    background: var(--orange-dark);
+}
+
+/* Links and highlights */
+a, .nav-links a:hover, .sidebar-nav a:hover {
+    color: var(--purple);
+}
+
+.rating, .stars {
+    color: var(--orange);
+}
+
+/* Section title underline */
+.section-title::after {
+    background: var(--orange);
+}
+
+/* Card hover */
+.card:hover .card-icon {
+    background: var(--purple);
+}
+
+/* Active nav */
+.nav-links a.active, .sidebar-nav a.active {
+    background: rgba(123, 44, 191, 0.1);
+    color: var(--purple);
+}
+
+/* Footer */
+.app-footer {
+    background: var(--header-bg);
+    border-top: 1px solid var(--border-color);
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Notification</title>
+</head>
+<body>
+    <button id="notifyBtn">Show Notification</button>
+    <script>
+        document.getElementById('notifyBtn').onclick = function() {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(function(perm) {
+                    if (perm === 'granted') {
+                        new Notification('Test', { body: 'This works!' });
+                    } else {
+                        alert('Permission denied');
+                    }
+                });
+            } else {
+                alert('Notifications not supported');
+            }
+        };
+    </script>
+</body>
+</html>

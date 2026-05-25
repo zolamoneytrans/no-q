@@ -1,0 +1,319 @@
+2026-04-01 12:07:17
+Array
+(
+    [m_payment_id] => 
+    [pf_payment_id] => 3083884
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 10.00
+    [amount_fee] => -0.23
+    [amount_net] => 9.77
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => 
+    [name_last] => 
+    [email_address] => 
+    [merchant_id] => 10000100
+    [signature] => 65ac5a8809d341b80d9e993c9d44ac57
+)
+
+
+2026-04-01 12:10:42
+Array
+(
+    [m_payment_id] => 
+    [pf_payment_id] => 3083906
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 10.00
+    [amount_fee] => -0.23
+    [amount_net] => 9.77
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => 
+    [name_last] => 
+    [email_address] => 
+    [merchant_id] => 10000100
+    [signature] => 89417fd34bf87c7521324492a9663b42
+)
+
+
+2026-04-01 12:19:49
+Array
+(
+    [m_payment_id] => 59
+    [pf_payment_id] => 3083944
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 10.00
+    [amount_fee] => -0.23
+    [amount_net] => 9.77
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => Mayibongwe Mngometulu
+    [name_last] => 
+    [email_address] => mayibongwemngometulu@gmail.com
+    [merchant_id] => 10000100
+    [signature] => 9d3e60cd1b78d857ec222e944971d396
+)
+
+
+2026-04-02 11:14:37
+Array
+(
+    [m_payment_id] => 
+    [pf_payment_id] => 3085503
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 2000.00
+    [amount_fee] => -46.00
+    [amount_net] => 1954.00
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => 
+    [name_last] => 
+    [email_address] => 
+    [merchant_id] => 10000100
+    [signature] => 07b608f8702a8d6bffe208ecea7a6e25
+)
+
+
+2026-04-02 11:16:04
+Array
+(
+    [m_payment_id] => 
+    [pf_payment_id] => 3085510
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 2000.00
+    [amount_fee] => -46.00
+    [amount_net] => 1954.00
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => 
+    [name_last] => 
+    [email_address] => 
+    [merchant_id] => 10000100
+    [signature] => 7d8fd91c7e117c5c0a313560b3ae513b
+)
+
+
+2026-04-02 11:18:46
+Array
+(
+    [m_payment_id] => 
+    [pf_payment_id] => 3085536
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 2000.00
+    [amount_fee] => -46.00
+    [amount_net] => 1954.00
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => 
+    [name_last] => 
+    [email_address] => 
+    [merchant_id] => 10000100
+    [signature] => e47c3589b880c0a3e292cb82c4a5366a
+)
+
+
+2026-04-02 11:19:30
+Array
+(
+    [m_payment_id] => 
+    [pf_payment_id] => 3085538
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 2000.00
+    [amount_fee] => -46.00
+    [amount_net] => 1954.00
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => 
+    [name_last] => 
+    [email_address] => 
+    [merchant_id] => 10000100
+    [signature] => 304c915979caa53fbef3d2504267246f
+)
+
+
+2026-04-02 11:32:01
+Array
+(
+    [m_payment_id] => 
+    [pf_payment_id] => 3085571
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 2000.00
+    [amount_fee] => -46.00
+    [amount_net] => 1954.00
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => 
+    [name_last] => 
+    [email_address] => 
+    [merchant_id] => 10000100
+    [signature] => 2d091cf1047f884e77a958736d813b93
+)
+
+
+2026-04-02 11:33:34
+Array
+(
+    [m_payment_id] => 
+    [pf_payment_id] => 3085574
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 2000.00
+    [amount_fee] => -46.00
+    [amount_net] => 1954.00
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => 
+    [name_last] => 
+    [email_address] => 
+    [merchant_id] => 10000100
+    [signature] => 6481e043cc1221542ff96ac90584d4e0
+)
+
+
+2026-04-02 11:35:30
+Array
+(
+    [m_payment_id] => 
+    [pf_payment_id] => 3085575
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 2000.00
+    [amount_fee] => -46.00
+    [amount_net] => 1954.00
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => 
+    [name_last] => 
+    [email_address] => 
+    [merchant_id] => 10000100
+    [signature] => c3b939861630fb4d5a374203e28d4c5e
+)
+
+
+2026-04-02 11:41:22
+Array
+(
+    [m_payment_id] => 
+    [pf_payment_id] => 3085584
+    [payment_status] => COMPLETE
+    [item_name] => Car Wash
+    [item_description] => Booking at Splash Car Wash
+    [amount_gross] => 2000.00
+    [amount_fee] => -46.00
+    [amount_net] => 1954.00
+    [custom_str1] => 
+    [custom_str2] => 
+    [custom_str3] => 
+    [custom_str4] => 
+    [custom_str5] => 
+    [custom_int1] => 
+    [custom_int2] => 
+    [custom_int3] => 
+    [custom_int4] => 
+    [custom_int5] => 
+    [name_first] => 
+    [name_last] => 
+    [email_address] => 
+    [merchant_id] => 10000100
+    [signature] => b665156fa9c8988afa44d57db383f43e
+)
+
+
