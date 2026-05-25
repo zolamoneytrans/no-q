@@ -5,6 +5,9 @@ workflows:
     integrations:
       app_store_connect: "Codemagic Key"
     environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.swaziapplilab.noq
       node: latest
       xcode: latest
       cocoapods: default
@@ -13,13 +16,6 @@ workflows:
         script: npm install
       - name: Sync Capacitor
         script: npx cap sync ios
-      - name: Fetch and Auto-Create Signing Files
-        script: |
-          keychain initialize
-          app-store-connect fetch-signing-files "com.swaziapplilab.noq" --type IOS_APP_STORE --create
-          keychain add-certificates
-          cd ios/App
-          xcode-project use-profiles
       - name: Build iOS App
         script: |
           cd ios/App
