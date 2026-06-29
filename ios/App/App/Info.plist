@@ -47,5 +47,15 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to your camera to scan QR codes and take photos for booking verification.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your photo library to allow you to upload profile pictures and booking receipts.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need permission to save booking receipts to your photo library.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to show nearby car washes and provide accurate navigation instructions.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need your location to show nearby car washes and provide accurate navigation instructions.</string>
 </dict>
 </plist>
