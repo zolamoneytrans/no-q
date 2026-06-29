@@ -3,11 +3,11 @@ workflows:
     name: iOS Capacitor Build
     instance_type: mac_mini_m2
     integrations:
-      app_store_connect: "Codemagic Key"
+      app_store_connect: "app_store"
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.swaziapplilab.noq
+        bundle_identifier: africa.carwashes.noq
       node: latest
       xcode: latest
       cocoapods: default
@@ -22,3 +22,7 @@ workflows:
           xcode-project build-ipa --project "App.xcodeproj" --scheme "App"
     artifacts:
       - ios/App/build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
