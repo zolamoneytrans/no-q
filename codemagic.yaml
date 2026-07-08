@@ -1,32 +1,48 @@
 workflows:
-  ios-capacitor-workflow:
-    name: iOS Capacitor Build
-    instance_type: mac_mini_m2
+  ios-app-store:
+    name: Build and publish iOS app to App Store Connect
     integrations:
-      app_store_connect: "app_store"
+      app_store_connect: Codemagic
+    instance_type: mac_mini_m1
+    max_build_duration: 120
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: africa.carwashes.noq
-      node: latest
-      xcode: latest
-      cocoapods: default
+      vars:
+        APPLE_TEAM_ID: "44Z38W9GRD"
     scripts:
-      - name: Install dependencies
-        script: npm install
-      - name: Sync Capacitor
-        script: npx cap sync ios
-      - name: Set up code signing settings on Xcode project
+      - name: Set dynamic build number and version for App Store Connect
         script: |
-          cd ios/App
-          xcode-project use-profiles
-      - name: Build iOS App
+          set -e
+          cd ios
+          # Ensure CFBundleVersion is dynamically incremented beyond build number 3 (e.g. $BUILD_NUMBER + 3)
+          TARGET_BUILD_NUMBER=$(($BUILD_NUMBER + 3))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $TARGET_BUILD_NUMBER" CarWash/Info.plist
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString 1.0" CarWash/Info.plist
+          echo "Dynamically set CFBundleVersion to $TARGET_BUILD_NUMBER and CFBundleShortVersionString to 1.0"
+      - name: Build iOS app archive
         script: |
-          cd ios/App
-          xcode-project build-ipa --project "App.xcodeproj" --scheme "App"
+          set -e
+          mkdir -p "$CM_BUILD_DIR/build"
+          xcodebuild -project ios/CarWash.xcodeproj \
+            -scheme CarWash \
+            -configuration Release \
+            -sdk iphoneos \
+            archive \
+            -archivePath "$CM_BUILD_DIR/build/CarWash.xcarchive" \
+            DEVELOPMENT_TEAM=$APPLE_TEAM_ID \
+            CODE_SIGN_STYLE=Automatic \
+            -allowProvisioningUpdates
+      - name: Export App Store package
+        script: |
+          set -e
+          mkdir -p "$CM_BUILD_DIR/build/ios"
+          xcodebuild -exportArchive \
+            -archivePath "$CM_BUILD_DIR/build/CarWash.xcarchive" \
+            -exportPath "$CM_BUILD_DIR/build/ios" \
+            -exportOptionsPlist ios/exportOptions.plist
     artifacts:
-      - ios/App/build/ios/ipa/*.ipa
+      - build/ios/*.ipa
+      - build/ios/*.xcarchive
+      - /tmp/xcodebuild_logs/*.log
     publishing:
       app_store_connect:
         auth: integration
-        submit_to_testflight: true
