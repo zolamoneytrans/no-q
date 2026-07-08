@@ -71,26 +71,43 @@ try {
     $biz_desc = 'Premium eco-friendly car wash & professional detailing center in Sandton. Featuring foam bath, ceramic coating, and interior sanitization.';
     
     if (!$demo_biz_id) {
-        $ins_biz = $pdo->prepare("INSERT INTO businesses (name, email, password, phone, address, city, province, description, is_approved, is_hidden, is_temporarily_closed, subscription_plan, rating, total_reviews, bank_name, account_number, account_holder, account_type, branch_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, 0, 0, 'pro', 4.8, 14, ?, ?, ?, ?, ?, NOW())");
+        $ins_biz = $pdo->prepare("INSERT INTO businesses (
+            name, email, password, phone, public_phone, public_email, address, region, description,
+            is_approved, is_hidden, is_temporarily_closed, is_active, subscription_plan, rating_avg,
+            bank_name, bank_account_number, bank_account_holder, bank_account_type, bank_branch_code, bank_verified,
+            monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close,
+            thursday_open, thursday_close, friday_open, friday_close, saturday_open, saturday_close, sunday_open, sunday_close,
+            created_at
+        ) VALUES (
+            ?, ?, ?, ?, ?, ?, ?, ?, ?,
+            1, 0, 0, 1, 'high', 4.8,
+            ?, ?, ?, ?, ?, 1,
+            '08:00', '18:00', '08:00', '18:00', '08:00', '18:00',
+            '08:00', '18:00', '08:00', '18:00', '08:00', '17:00', '08:00', '15:00',
+            NOW()
+        )");
         $ins_biz->execute([
-            'Executive Sparkle Auto Valet', $biz_email, $biz_pass_hashed, '+27110009876',
-            '123 Sandton Drive, Sandton', 'Johannesburg', 'Gauteng', $biz_desc,
+            'Executive Sparkle Auto Valet', $biz_email, $biz_pass_hashed, '+27110009876', '+27110009876', $biz_email,
+            '123 Sandton Drive, Sandton', 'Johannesburg, Gauteng', $biz_desc,
             'First National Bank', '62000000123', 'Executive Sparkle CC', 'Cheque', '250655'
         ]);
         $demo_biz_id = $pdo->lastInsertId();
     } else {
-        $upd_biz = $pdo->prepare("UPDATE businesses SET name = ?, password = ?, address = ?, city = ?, province = ?, description = ?, is_approved = 1, is_hidden = 0, is_temporarily_closed = 0, subscription_plan = 'pro', rating = 4.8, total_reviews = 14 WHERE id = ?");
+        $upd_biz = $pdo->prepare("UPDATE businesses SET
+            name = ?, password = ?, address = ?, region = ?, description = ?,
+            is_approved = 1, is_hidden = 0, is_temporarily_closed = 0, is_active = 1, subscription_plan = 'high', rating_avg = 4.8
+            WHERE id = ?");
         $upd_biz->execute([
-            'Executive Sparkle Auto Valet', $biz_pass_hashed, '123 Sandton Drive, Sandton', 'Johannesburg', 'Gauteng', $biz_desc, $demo_biz_id
+            'Executive Sparkle Auto Valet', $biz_pass_hashed, '123 Sandton Drive, Sandton', 'Johannesburg, Gauteng', $biz_desc, $demo_biz_id
         ]);
     }
 
-    // Clean old demo test bookings/services/specials/notifications to prevent clutter on refresh
+    // Clean old demo test data
     $pdo->prepare("DELETE FROM bookings WHERE user_id = ? OR business_id = ?")->execute([$demo_user_id, $demo_biz_id]);
     $pdo->prepare("DELETE FROM services WHERE business_id = ?")->execute([$demo_biz_id]);
     $pdo->prepare("DELETE FROM specials WHERE business_id = ?")->execute([$demo_biz_id]);
     $pdo->prepare("DELETE FROM ratings WHERE business_id = ?")->execute([$demo_biz_id]);
-    $pdo->prepare("DELETE FROM notifications WHERE user_id = ? OR business_id = ?")->execute([$demo_user_id, $demo_biz_id]);
+    $pdo->prepare("DELETE FROM notifications WHERE user_id = ?")->execute([$demo_user_id]);
     $pdo->prepare("DELETE FROM user_favorites WHERE user_id = ? AND business_id = ?")->execute([$demo_user_id, $demo_biz_id]);
 
     // Add Services for Demo Business
@@ -100,7 +117,7 @@ try {
         ['Executive Ceramic Polish & Protect', 'High-gloss polymer wax coating, clay bar decontamination, and UV interior shield.', 650, 120],
         ['Engine Bay Steam Clean', 'Safe high-pressure steam cleaning and degreasing of engine bay.', 180, 40]
     ];
-    $srv_stmt = $pdo->prepare("INSERT INTO services (business_id, name, description, price, duration_minutes) VALUES (?, ?, ?, ?, ?)");
+    $srv_stmt = $pdo->prepare("INSERT INTO services (business_id, name, description, price, duration) VALUES (?, ?, ?, ?, ?)");
     $service_ids = [];
     foreach ($services as $s) {
         $srv_stmt->execute([$demo_biz_id, $s[0], $s[1], $s[2], $s[3]]);
@@ -108,44 +125,56 @@ try {
     }
 
     // Add Specials
-    $spec_stmt = $pdo->prepare("INSERT INTO specials (business_id, title, description, discount_percentage, valid_days) VALUES (?, ?, ?, ?, ?)");
-    $spec_stmt->execute([$demo_biz_id, 'Midweek Happy Hour 20% Off', 'Get 20% off any wash on Tuesday, Wednesday, and Thursday mornings!', 20, 'Tue,Wed,Thu']);
-    $spec_stmt->execute([$demo_biz_id, 'Weekend Polish Package Special', 'Book an Executive Ceramic Polish and receive free interior leather conditioning.', 15, 'Sat,Sun']);
+    $spec_stmt = $pdo->prepare("INSERT INTO specials (business_id, title, description, discount_type, discount_value, start_date, end_date, is_active, created_at) VALUES (?, ?, ?, 'percentage', ?, ?, ?, 1, NOW())");
+    $start_dt = date('Y-m-d');
+    $end_dt = date('Y-m-d', strtotime('+30 days'));
+    $spec_stmt->execute([$demo_biz_id, 'Midweek Happy Hour 20% Off', 'Get 20% off any wash on Tuesday, Wednesday, and Thursday mornings!', 20, $start_dt, $end_dt]);
+    $spec_stmt->execute([$demo_biz_id, 'Weekend Polish Package Special', 'Book an Executive Ceramic Polish and receive free interior leather conditioning.', 15, $start_dt, $end_dt]);
 
     // Add Favorite
     $pdo->prepare("INSERT INTO user_favorites (user_id, business_id, created_at) VALUES (?, ?, NOW())")->execute([$demo_user_id, $demo_biz_id]);
 
-    // Add Bookings (Completed rated, Completed unrated for Rate Car Wash testing, Confirmed upcoming, Pending)
-    $book_stmt = $pdo->prepare("INSERT INTO bookings (user_id, business_id, service_id, booking_date, booking_time, status, vehicle_registration, notes, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+    // Add Bookings
+    $book_stmt = $pdo->prepare("INSERT INTO bookings (booking_code, user_id, business_id, service_id, booking_date, time_slot, status, payment_status, total_amount, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, 'paid', ?, NOW())");
     
-    // 1. Completed & rated (yesterday)
+    // 1. Completed booking #1 (yesterday)
     $yesterday = date('Y-m-d', strtotime('-1 day'));
-    $book_stmt->execute([$demo_user_id, $demo_biz_id, $service_ids[1] ?? null, $yesterday, '11:00:00', 'completed', 'CA 123-456', 'Please take extra care with rear seats']);
-    $completed_booking_id = $pdo->lastInsertId();
+    $book_stmt->execute(['NQ-DEMO1', $demo_user_id, $demo_biz_id, $service_ids[1] ?? null, $yesterday, '11:00:00', 'completed', 350]);
+    $b_id_1 = $pdo->lastInsertId();
 
-    // 2. Completed & ready to be rated by Apple Reviewer (earlier today)
+    // 2. Completed booking #2 (earlier today - ready to be rated by Apple Reviewer)
     $today = date('Y-m-d');
-    $book_stmt->execute([$demo_user_id, $demo_biz_id, $service_ids[0] ?? null, $today, '09:00:00', 'completed', 'CA 123-456', 'Standard express wash']);
+    $book_stmt->execute(['NQ-DEMO2', $demo_user_id, $demo_biz_id, $service_ids[0] ?? null, $today, '09:00:00', 'completed', 120]);
+    $b_id_2 = $pdo->lastInsertId();
 
-    // 3. Upcoming Confirmed (tomorrow)
+    // 3. Completed booking #3 (3 days ago)
+    $three_days_ago = date('Y-m-d', strtotime('-3 days'));
+    $book_stmt->execute(['NQ-DEMO5', $demo_user_id, $demo_biz_id, $service_ids[2] ?? null, $three_days_ago, '15:00:00', 'completed', 650]);
+    $b_id_3 = $pdo->lastInsertId();
+
+    // 4. Completed booking #4 (5 days ago)
+    $five_days_ago = date('Y-m-d', strtotime('-5 days'));
+    $book_stmt->execute(['NQ-DEMO6', $demo_user_id, $demo_biz_id, $service_ids[0] ?? null, $five_days_ago, '10:00:00', 'completed', 120]);
+    $b_id_4 = $pdo->lastInsertId();
+
+    // 5. Upcoming Confirmed (tomorrow)
     $tomorrow = date('Y-m-d', strtotime('+1 day'));
-    $book_stmt->execute([$demo_user_id, $demo_biz_id, $service_ids[2] ?? null, $tomorrow, '10:30:00', 'confirmed', 'CA 123-456', 'Ceramic polish requested']);
+    $book_stmt->execute(['NQ-DEMO3', $demo_user_id, $demo_biz_id, $service_ids[2] ?? null, $tomorrow, '10:30:00', 'confirmed', 650]);
 
-    // 4. Pending Booking (in 3 days)
+    // 6. Pending Booking (in 3 days)
     $future = date('Y-m-d', strtotime('+3 days'));
-    $book_stmt->execute([$demo_user_id, $demo_biz_id, $service_ids[1] ?? null, $future, '14:00:00', 'pending', 'CA 123-456', 'Afternoon appointment']);
+    $book_stmt->execute(['NQ-DEMO4', $demo_user_id, $demo_biz_id, $service_ids[1] ?? null, $future, '14:00:00', 'pending', 350]);
 
-    // Add Ratings for Demo Business
-    $rate_stmt = $pdo->prepare("INSERT INTO ratings (booking_id, user_id, business_id, rating, review, created_at) VALUES (?, ?, ?, ?, ?, NOW())");
-    $rate_stmt->execute([$completed_booking_id, $demo_user_id, $demo_biz_id, 5, 'Incredible service! My car looks brand new and the staff were so professional and quick. No queues at all!']);
-    $rate_stmt->execute([null, $demo_user_id, $demo_biz_id, 5, 'Best car valet in Sandton. The online booking app makes scheduling effortless. Highly recommended.']);
-    $rate_stmt->execute([null, $demo_user_id, $demo_biz_id, 4.5, 'Quick foam wash, great attention to detail on the rims and tire shine.']);
+    // Add Ratings linked to completed bookings
+    $rate_stmt = $pdo->prepare("INSERT INTO ratings (booking_id, user_id, business_id, rating, rating_customer_service, rating_time_taken, rating_quality, rating_environment, rating_cost, comment, created_at) VALUES (?, ?, ?, ?, 5, 5, 5, 5, 5, ?, NOW())");
+    $rate_stmt->execute([$b_id_1, $demo_user_id, $demo_biz_id, 5, 'Incredible service! My car looks brand new and the staff were so professional and quick. No queues at all!']);
+    $rate_stmt->execute([$b_id_3, $demo_user_id, $demo_biz_id, 5, 'Best car valet in Sandton. The online booking app makes scheduling effortless. Highly recommended.']);
+    $rate_stmt->execute([$b_id_4, $demo_user_id, $demo_biz_id, 4, 'Quick foam wash, great attention to detail on the rims and tire shine.']);
 
     // Add Notifications
-    $notif_stmt = $pdo->prepare("INSERT INTO notifications (user_id, business_id, title, message, is_read, created_at) VALUES (?, ?, ?, ?, 0, NOW())");
-    $notif_stmt->execute([$demo_user_id, null, 'Welcome to No Q!', 'Your customer account is verified and ready to book car washes instantly.']);
-    $notif_stmt->execute([$demo_user_id, $demo_biz_id, 'Booking Confirmed (#1024)', 'Your appointment at Executive Sparkle Auto Valet for tomorrow at 10:30 AM has been confirmed!']);
-    $notif_stmt->execute([null, $demo_biz_id, 'New Booking Received (#1025)', 'You have a new incoming booking request for Full Interior & Exterior Detail on ' . $future . '.']);
+    $notif_stmt = $pdo->prepare("INSERT INTO notifications (user_id, title, message, link, is_read, created_at) VALUES (?, ?, ?, ?, 0, NOW())");
+    $notif_stmt->execute([$demo_user_id, 'Welcome to No Q!', 'Your customer account is verified and ready to book car washes instantly.', 'user-dashboard.php']);
+    $notif_stmt->execute([$demo_user_id, 'Booking Confirmed (#NQ-DEMO3)', 'Your appointment at Executive Sparkle Auto Valet for tomorrow at 10:30 AM has been confirmed!', 'my-bookings.php']);
 
     $pdo->commit();
 
