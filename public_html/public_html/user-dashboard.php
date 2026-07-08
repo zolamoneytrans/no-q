@@ -556,6 +556,7 @@ if ($current_hour < 12) {
             ?>
             <a href="search.php">Book a wash</a>
             <a href="notifications.php"><i class="fa-regular fa-bell"></i> Notifications<?php if ($unread_count>0): ?><span style="background:var(--orange-primary); color:white; border-radius:20px; padding:2px 8px; margin-left:5px;"><?= $unread_count ?></span><?php endif; ?></a>
+            <a href="user-settings.php"><i class="fa-regular fa-gear"></i> Settings</a>
             <a href="logout.php"><i class="fa-regular fa-circle-user"></i> Logout</a>
         </nav>
     </header>
@@ -571,6 +572,7 @@ if ($current_hour < 12) {
                 <a href="https://carwashes.africa/my-bookings.php?filter=completed"><i class="fa-regular fa-star"></i> Rate Car Wash</a>
                 <a href="my-bookings.php"><i class="fa-regular fa-calendar-check"></i> My Bookings</a>
                 <a href="notifications.php"><i class="fa-regular fa-bell"></i> Notifications</a>
+                <a href="user-settings.php"><i class="fa-regular fa-gear"></i> Account Settings</a>
             </nav>
             <div style="margin-top: 2rem; text-align: center;">
                 <a href="search.php" style="display: block; background: linear-gradient(135deg, var(--orange-primary), var(--orange-dark)); color: white; padding: 1rem; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 5px 15px rgba(255,152,0,0.3); transition: transform 0.2s;"><i class="fa-solid fa-plus-circle"></i> Book a Car Wash</a>

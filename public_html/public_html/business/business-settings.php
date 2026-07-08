@@ -451,7 +451,15 @@ if (isset($_SESSION['password_error'])) {
             <input type="password" name="confirm_password" id="confirm_password" required placeholder="Confirm new password">
         </div>
         <button type="submit" class="btn-primary" style="background: linear-gradient(135deg, var(--purple-primary), var(--purple-dark));"><i class="fa-solid fa-key"></i> Change Password</button>
-    </form>
+</div>
+
+<!-- Danger Zone: Business Account Deletion -->
+<div class="card" style="border: 2px dashed #fca5a5; background: #fef2f2;">
+    <h2 style="color: #dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> Danger Zone</h2>
+    <p style="color: #7f1d1d; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.5;">
+        Deleting your business account will permanently remove your car wash listing from No Q, along with all associated services, specials, booking records, and review history. This action cannot be undone.
+    </p>
+    <a href="business-delete-account.php" class="btn-primary" style="background: #dc2626; text-align: center; display: block; text-decoration: none;"><i class="fa-solid fa-trash-can"></i> Delete Business Account...</a>
 </div>
 
 <script>

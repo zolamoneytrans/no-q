@@ -275,6 +275,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="auth-container">
         <div class="auth-card">
             <h2>Welcome back</h2>
+            <?php if (isset($_GET['success']) && $_GET['success'] === 'account_deleted'): ?>
+                <div style="color: #155724; background: #d4edda; border: 1px solid #c3e6cb; padding: 1rem; border-radius: 30px; margin-bottom: 1.5rem; font-size: 0.9rem; text-align: center;">
+                    <i class="fa-solid fa-circle-check"></i> Your account and all associated personal data have been permanently deleted.
+                </div>
+            <?php endif; ?>
             <?php if ($error): ?>
                 <div class="error">
                     <?= htmlspecialchars($error) ?>

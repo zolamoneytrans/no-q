@@ -391,6 +391,7 @@ $status_counts['upcoming'] = $upcoming_stmt->fetchColumn();
             <a href="index.php">Home</a>
             <a href="user-dashboard.php">Dashboard</a>
             <a href="my-bookings.php" style="background:rgba(106,27,154,0.1);">My Bookings</a>
+            <a href="user-settings.php">Settings</a>
             <a href="logout.php">Logout</a>
         </nav>
     </header>

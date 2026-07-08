@@ -433,6 +433,7 @@ if ($percentage >= 80 && $limit != 999999 && $business['is_hidden'] == 0) {
         <nav class="nav-links" id="navLinks">
             <a href="/index.php">Home</a>
             <a href="/contact.php">Contact</a>
+            <a href="business-settings.php">Settings</a>
             <a href="business-logout.php">Logout</a>
         </nav>
     </header>

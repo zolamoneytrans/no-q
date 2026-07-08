@@ -341,6 +341,7 @@ $notifications = $stmt->fetchAll();
         <nav class="nav-links" id="navLinks">
             <a href="index.php">Home</a>
             <a href="user-dashboard.php">Dashboard</a>
+            <a href="user-settings.php">Settings</a>
             <a href="logout.php">Logout</a>
         </nav>
     </header>
