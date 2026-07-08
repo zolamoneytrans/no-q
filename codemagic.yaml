@@ -2,7 +2,7 @@ workflows:
   ios-app-store:
     name: Build and publish iOS app to App Store Connect
     integrations:
-      app_store_connect: Codemagic
+      app_store_connect: app_store2
     instance_type: mac_mini_m1
     max_build_duration: 120
     environment:
