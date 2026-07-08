@@ -18,6 +18,13 @@ workflows:
           /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $TARGET_BUILD_NUMBER" CarWash/Info.plist
           /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString 1.0" CarWash/Info.plist
           echo "Dynamically set CFBundleVersion to $TARGET_BUILD_NUMBER and CFBundleShortVersionString to 1.0"
+      - name: Fetch signing files and set up keychain
+        script: |
+          set -e
+          keychain initialize
+          app-store-connect fetch-signing-files "africa.carwashes.noq" --type IOS_APP_STORE --create
+          keychain add-certificates
+          xcode-project use-profiles --project ios/CarWash.xcodeproj --export-options-plist ios/exportOptions.plist
       - name: Build iOS app archive
         script: |
           set -e
@@ -27,10 +34,7 @@ workflows:
             -configuration Release \
             -sdk iphoneos \
             archive \
-            -archivePath "$CM_BUILD_DIR/build/CarWash.xcarchive" \
-            DEVELOPMENT_TEAM=$APPLE_TEAM_ID \
-            CODE_SIGN_STYLE=Automatic \
-            -allowProvisioningUpdates
+            -archivePath "$CM_BUILD_DIR/build/CarWash.xcarchive"
       - name: Export App Store package
         script: |
           set -e
